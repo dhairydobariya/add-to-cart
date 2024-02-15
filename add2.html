@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>umang</title>
+
+
+    <style>
+     
+
+        .container {
+            width: 1140px;
+            margin: 0 auto;
+            padding: 0px 15px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0px -15px;
+        }
+
+        main {
+            margin-top: 150px;
+        }
+
+        header {
+            width: 100%;
+            position: fixed;
+            top: 0%;
+            left: 0%;
+            background-color: black;
+            border-bottom: 2px solid white;
+        }
+
+        header nav ul li a {
+            color: white;
+            font-weight: 800;
+        }
+
+        header nav ul li a:hover {
+            color: red;
+            transition: 0.5s;
+
+        }
+
+        header .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header .logo img {
+            filter: drop-shadow(0px 0px 10px white);
+            padding: 10px;
+        }
+
+        .col-3 {
+            width: 25%;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        ul,
+        li {
+            padding: none;
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            margin: 0px 10px;
+        }
+
+        .align-center {
+            align-items: center;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .logo {
+            width: 100px;
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .social a {
+            color: white;
+        }
+
+
+        .box {
+            background-color: black;
+            width: 300px;
+            height: 400px;
+            overflow: hidden;
+            margin: 15px;
+        }
+
+        .box .img {
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .box .contant .title h5,
+        .box .contant .discription {
+            color: white;
+        }
+
+        .box .contant .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 25px;
+        }
+
+        .box .contant .btn button {
+            color: white;
+            padding: 15px 25px;
+            background-color: blue;
+            outline: none;
+            border: none;
+
+        }
+
+        .box .contant .btn button:hover {
+            background-color: red;
+            transition: 0.5s;
+        }
+
+        .module {
+            max-width: 250px;
+            padding: 1rem;
+            color: white;
+            border-width: 3px;
+            border-style: solid;
+            border-image:
+                linear-gradient(to bottom,
+                    red,
+                    rgba(0, 0, 0, 0)) 1 100%;
+        }
+
+        .button {
+            margin: 10px 7 0px;
+            display: inline-block;
+            padding: 15px 25px;
+            color: white;
+            background-color: red;
+            cursor: pointer;
+        }
+        .prices {
+            width: 0px;
+            height: 0px;
+            background-color: red ;
+            color: white ;
+            padding: 40px
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div class="row align-center justify-between">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/logop.png" alt="">
+                    </a>
+                </div>
+                <nav>
+                    <ul class="d-flex">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">ABOUT</a></li>
+                        <li><a href="#">BLOG</a></li>
+                        <li><a href="#">GALLERY</a></li>
+                        <li><a href="#">CONTANT</a></li>
+                    </ul>
+                </nav>
+                <div class="social">
+                    <a href="#">SHOP</a>
+                    <a href="#">INSTA</a>
+                    <a href="#">TWITTWE</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section>
+            <div class="container">
+                <div class="row" id="favourit">
+
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <div class="row d-flex justify-center align-center prices">
+                    <div id="price"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+
+        
+        let price = document.getElementById("price");
+        let favourit = document.getElementById("favourit");
+        const our = () => {
+            let ourproduct = JSON.parse(localStorage.getItem("cart"));
+            console.log(ourproduct);
+            let t = 0;
+            ourproduct.forEach((ele) => {
+                favourit.innerHTML += `<div class="col-3">
+                    <div class="box module">
+                      <div class="img"><img src="${ele.thumbnail}" alt="thumbnail"></div>
+                      <div class="contant">
+                          <div class="title"><h5>${ele.title}</h5></div>
+                        <div class="price">
+                            $ ${ele.price}
+                        </div>
+                      </div>
+                        <a class="button" onclick="return deletes(${ele.id})">
+                            delete
+                        </a>
+                  </div>
+              </div>`;
+
+              t += ele.price
+            })
+            price.innerHTML = "$"+t;
+        };
+        our();
+
+
+        let deletes = (id) => {
+            
+            let deleteCart = JSON.parse(localStorage.getItem("cart"))
+            
+            let deleteArr = [];
+            deleteCart.filter((cartItem) => {
+             
+                
+                if (cartItem.id != id) {
+
+                    deleteArr.push(cartItem);
+                }
+               
+            });
+            
+            localStorage.setItem('cart', JSON.stringify(deleteArr));
+            favourit.innerHTML = ``;
+           
+
+            our();
+            
+        };
+        deletes()
+       
+    </script>
+</body>
+
+</html>

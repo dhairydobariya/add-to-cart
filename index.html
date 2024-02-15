@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dhairy</title>
+
+    <style>
+        body{
+            background-color: white !important;
+        }
+        *{
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            width:   1140px;
+            margin:  0 auto;
+            padding: 0px 15px;
+        }
+        .row{
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0px -15px;
+        }
+        main{
+            margin-top: 150px;
+        }
+        header{
+            width: 100%;
+            position: fixed;
+            top: 0%;
+            left: 0%;
+            background-color: black;
+            border-bottom: 2px solid white;
+        }
+        header nav ul li a{
+            color: white;
+            font-weight: 800;
+        }
+        header nav ul li a:hover{
+            color: red;
+            transition: 0.5s;
+            
+        }
+        header .logo{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        header .logo img{
+            filter: drop-shadow(0px 0px 10px white);
+            padding: 10px;
+        }
+        .col-3{
+            width: 25%;
+        }
+        .d-flex{
+            display: flex;
+        }
+        ul , li{
+            padding: none;
+            list-style: none;
+        } 
+         a {
+            text-decoration: none;
+            margin: 0px 10px;
+        }
+        .align-center{
+            align-items: center;
+        }
+        .justify-center{
+            justify-content: center;
+        }
+        .logo{
+            width: 100px;
+        }
+        img{
+            width: 100%;
+            display: block;
+        }
+        .justify-between{
+            justify-content: space-between;
+        }
+        .social a{
+            color: white;
+        }
+
+
+        .box{
+            background-color: black;
+            width: 300px;
+            height: 400px;
+            overflow: hidden;
+            margin: 15px;
+        }
+        .box .img{
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+        }
+        .box .contant .title h5 , .box .contant .discription{
+            color: white;
+        }
+        .box .contant .btn{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 25px;
+        }
+        .box .contant .btn button{
+            color: white;
+            padding: 15px 25px;
+            background-color: blue;
+            outline: none;
+            border: none;
+
+        }
+        .box .contant .btn button:hover{
+            background-color: red;
+            transition: 0.5s;
+        }
+        .module {
+            max-width: 250px;
+            padding: 1rem;
+            color: white;
+            border-width: 3px;
+            border-style: solid;
+            border-image: 
+              linear-gradient(
+                to bottom, 
+                red, 
+                rgba(0, 0, 0, 0)
+              ) 1 100%;
+          }
+          .button{
+            width: 50px;
+            height: 25px;
+            color: red;
+            background-color: white;
+
+          }
+          .our-product{
+            position: fixed;
+            top: 15%;
+            right: 0%;
+            z-index: 99;
+            padding: 10px 20px;
+            background-color: black;
+            border: 1px solid red;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;  
+          }
+          .our-product a{
+            color: white;
+            font-weight: 800;
+          }
+          #show{
+            position: absolute;
+            top: 20%;
+            right: 0%;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: red;
+            color: white;
+            text-align: center;
+          }
+    </style>
+</head>
+<body>
+    <li class="our-product">
+        <a href="add2.html" onclick="return our()">
+            Add to cart
+        </a>
+        <div id="show">0</div>
+    </li>
+    <header>
+        <div class="container">
+            <div class="row align-center justify-between">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/logop.png" alt="">
+                    </a>
+                </div>
+                <nav>
+                    <ul class="d-flex">
+                        <li><a href="#">HOME</a></li>
+                        <li><a href="#">ABOUT</a></li>
+                        <li><a href="#">BLOG</a></li>
+                        <li><a href="#">GALLERY</a></li>
+                        <li><a href="#">CONTANT</a></li>
+                    </ul>
+                </nav>
+                <div class="social">
+                    <a href="#">SHOP</a>
+                    <a href="#">INSTA</a>
+                   
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section>
+            <div class="container">
+                <div class="row" id="product">
+                  
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/addtocart.js"></script>
+</body>
+</html>
